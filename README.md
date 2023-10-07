@@ -1,5 +1,7 @@
-#Simple Shell
-##Resources
+# Simple Shell
+
+## Resources
+
 Read or watch:
 
 Unix shell
@@ -9,7 +11,8 @@ Everything you need to know to start coding your own shell concept page
 man or help:
 
 sh (Run sh as well)
-###General
+
+### General
 Who designed and implemented the original Unix operating system
 Who wrote the first version of the UNIX shell
 Who invented the B programming language (the direct predecessor to the C programming language)
