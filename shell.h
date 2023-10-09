@@ -123,5 +123,10 @@ int alias_replace(info_typ *);
 int vars_replace(info_typ *);
 int string_replace(char **, char *);
 
+/* The_builtins.c_file */
+int _myexit(info_typ *);
+int _mycd(info_typ *);
+int _myhelp(info_typ *);
+
 
 #endif
