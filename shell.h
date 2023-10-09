@@ -110,6 +110,12 @@ typedef struct builtin
 	int (*func)(info_typ *);
 } builtin_table;
 
+/* the_convert.c_file*/
+int interactive(info_typ *);
+int _atoi(char *);
+int _isalpha(int);
+int is_delim(char, char *);
+
 
 
 
