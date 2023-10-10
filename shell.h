@@ -128,5 +128,7 @@ int _myexit(info_typ *);
 int _mycd(info_typ *);
 int _myhelp(info_typ *);
 
+/* The_memory.c_file */
+int good(void **);
 
 #endif
