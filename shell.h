@@ -131,4 +131,10 @@ int _myhelp(info_typ *);
 /* The_memory.c_file */
 int good(void **);
 
+/* The_environ.c_file */
+char *_getenv(info_typ *, const char *);
+int _myenv(info_typ *);
+int _mysetenv(info_typ *);
+int _myunsetenv(info_typ *);
+int populate_env_list(info_typ *);
 #endif
