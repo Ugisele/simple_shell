@@ -143,4 +143,8 @@ char **get_environ(info_typ *);
 int _unsetenv(info_typ *, char *);
 int _setenv(info_typ *, char *, char *);
 
+/* The_builtins0.c */
+int _myhistory(info_typ *);
+int _myalias(info_typ *);
+
 #endif
