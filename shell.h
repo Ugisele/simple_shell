@@ -147,4 +147,9 @@ int _setenv(info_typ *, char *, char *);
 int _myhistory(info_typ *);
 int _myalias(info_typ *);
 
+/* The_reallocate.c */
+char *_memoryset(char *, char, unsigned int);
+void _ffree(char **);
+void *_realloc(void *, unsigned int, unsigned int);
+
 #endif
