@@ -156,4 +156,9 @@ void *_realloc(void *, unsigned int, unsigned int);
 void clear_info(info_typ *);
 void set_info(info_typ *, char **);
 void free_info(info_typ *, int);
+
+/* The_exist.c_file */
+char *_strncpy(char *, char *, int);
+char *_strncat(char *, char *, int);
+char *_strchr(char *, char);
 #endif
