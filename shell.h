@@ -152,4 +152,8 @@ char *_memoryset(char *, char, unsigned int);
 void _ffree(char **);
 void *_realloc(void *, unsigned int, unsigned int);
 
+/* The_getinformation.c_file */
+void clear_info(info_typ *);
+void set_info(info_typ *, char **);
+void free_info(info_typ *, int);
 #endif
