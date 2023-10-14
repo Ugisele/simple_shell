@@ -168,4 +168,11 @@ int _eputchar(char);
 int _putfdir(char chr, int fdir);
 int _putsfdir(char *str, int fdir);
 
+/* The_erratum0.c */
+int _erratoi(char *);
+void print_error(info_typ *, char *);
+int print_d(int, int);
+char *convert_number(long int, int, int);
+void remove_comments(char *);
+
 #endif
