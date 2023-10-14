@@ -161,4 +161,11 @@ void free_info(info_typ *, int);
 char *_strncpy(char *, char *, int);
 char *_strncat(char *, char *, int);
 char *_strchr(char *, char);
+
+/* The_erratum.c */
+void _eputs(char *);
+int _eputchar(char);
+int _putfdir(char c, int fdir);
+int _putsfdir(char *str, int fdir);
+
 #endif
