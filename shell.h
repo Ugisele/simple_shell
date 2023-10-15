@@ -184,4 +184,8 @@ void sigintHandler(int);
 int is_cmd(info_typ *, char *);
 char *dup_chars(char *, int, int);
 char *path_found(info_typ *, char *, char *);
+
+/* The_token.c_file */
+char **towstr(char *, char *);
+char **towstr1(char *, char);
 #endif
