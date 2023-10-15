@@ -175,4 +175,8 @@ int print_d(int, int);
 char *convert_number(long int, int, int);
 void remove_comments(char *);
 
+/*The_getdata.c_file*/
+ssize_typ get_input(info_typ *);
+int _getline(info_typ *, char **, size_typ *);
+void sigintHandler(int);
 #endif
