@@ -179,4 +179,9 @@ void remove_comments(char *);
 ssize_typ get_input(info_typ *);
 int _getline(info_typ *, char **, size_typ *);
 void sigintHandler(int);
+
+/* The_analyzer.c */
+int is_cmd(info_typ *, char *);
+char *dup_chars(char *, int, int);
+char *path_found(info_typ *, char *, char *);
 #endif
