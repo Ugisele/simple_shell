@@ -196,4 +196,10 @@ size_typ print_list_str(const list_typ *);
 int delete_node_at_index(list_typ **, unsigned int);
 void free_list(list_typ **);
 
+/* The_thread.c */
+int _strlen(char *);
+int _strcmp(char *, char *);
+char *starts_with(const char *, const char *);
+char *_strcat(char *, char *);
+
 #endif
