@@ -188,4 +188,12 @@ char *path_found(info_typ *, char *, char *);
 /* The_token.c_file */
 char **towstr(char *, char *);
 char **towstr1(char *, char);
+
+/* The_itemize.c */
+list_typ *add_node(list_typ **, const char *, int);
+list_typ *add_node_end(list_typ **, const char *, int);
+size_typ print_list_str(const list_typ *);
+int delete_node_at_index(list_typ **, unsigned int);
+void free_list(list_typ **);
+
 #endif
