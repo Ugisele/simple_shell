@@ -196,4 +196,11 @@ size_typ print_list_str(const list_typ *);
 int delete_node_at_index(list_typ **, unsigned int);
 void free_list(list_typ **);
 
+/* The_itemize0.c */
+size_typ list_len(const list_typ *);
+char **list_to_strings(list_typ *);
+size_typ print_list(const list_typ *);
+list_typ *node_starts_with(list_typ *, char *, char);
+ssize_typ get_node_index(list_typ *, list_typ *);
+
 #endif
