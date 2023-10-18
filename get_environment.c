@@ -27,7 +27,7 @@ char **get_environ(info_typ *info)
 int _unsetenv(info_typ *info, char *var)
 {
 	list_typ *node = info->env;
-	size_typ i = 0;
+	size_t i = 0;
 	char *j;
 
 	if (!node || !var)
