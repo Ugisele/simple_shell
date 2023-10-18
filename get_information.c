@@ -1,74 +1,93 @@
 #include "shell.h"
 
 /**
- * clear_info - initializes info_typ struct
- * @info: struct address
+ * get_environ - returns the string array copy of our environ
+ * @info: Structure containing potential arguments. Used to maintain
+ *          constant function prototype.
+ * Return: Always 0
  */
-void clear_info(info_typ *info)
+char **get_environ(info_typ *info)
 {
-	info->arg = NULL;
-	info->argv = NULL;
-	info->path = NULL;
-	info->argc = 0;
+	if (!info->environ || info->env_changed)
+	{
+		info->environ = list_to_strings(info->env);
+		info->env_changed = 0;
+	}
+
+	return (info->environ);
 }
 
 /**
- * set_info - initializes info_typ struct
- * @info: struct address
- * @av: argument vector
+ * _unsetenv - Remove an environment variable
+ * @info: Structure containing potential arguments. Used to maintain
+ *        constant function prototype.
+ *  Return: 1 on delete, 0 otherwise
+ * @var: the string env var property
  */
-void set_info(info_typ *info, char **av)
+int _unsetenv(info_typ *info, char *var)
 {
-	int g = 0;
+	list_typ *node = info->env;
+	size_t i = 0;
+	char *j;
 
-	info->fname = av[0];
-	if (info->arg)
+	if (!node || !var)
+		return (0);
+
+	while (node)
 	{
-		info->argv = strtow(info->arg, " \t");
-		if (!info->argv)
+		j = starts_with(node->str, var);
+		if (j && *j == '=')
 		{
-
-			info->argv = malloc(sizeof(char *) * 2);
-			if (info->argv)
-			{
-				info->argv[0] = _strdup(info->arg);
-				info->argv[1] = NULL;
-			}
+			info->env_changed = delete_node_at_index(&(info->env), i);
+			i = 0;
+			node = info->env;
+			continue;
 		}
-		for (g = 0; info->argv && info->argv[g]; g++)
-			;
-		info->argc = g;
-
-		alias_replace(info);
-		vars_replace(info);
+		node = node->next;
+		i++;
 	}
+	return (info->env_changed);
 }
 
 /**
- * free_info - frees info_typ struct fields
- * @info: struct address
- * @all: true if freeing all fields
+ * _setenv - Initialize a new environment variable,
+ *             or modify an existing one
+ * @info: Structure containing potential arguments. Used to maintain
+ *        constant function prototype.
+ * @var: the string env var property
+ * @value: the string env var value
+ *  Return: Always 0
  */
-void free_info(info_typ *info, int all)
+int _setenv(info_typ *info, char *var, char *value)
 {
-	ffree(info->argv);
-	info->argv = NULL;
-	info->path = NULL;
-	if (all)
+	char *buf = NULL;
+	list_typ *node;
+	char *j;
+
+	if (!var || !value)
+		return (0);
+
+	buf = malloc(_strlen(var) + _strlen(value) + 2);
+	if (!buf)
+		return (1);
+	_strcpy(buf, var);
+	_strcat(buf, "=");
+	_strcat(buf, value);
+	node = info->env;
+	while (node)
 	{
-		if (!info->cmd_buf)
-			free(info->arg);
-		if (info->env)
-			free_list(&(info->env));
-		if (info->history)
-			free_list(&(info->history));
-		if (info->alias)
-			free_list(&(info->alias));
-		ffree(info->environ);
-			info->environ = NULL;
-		bfree((void **)info->cmd_buf);
-		if (info->readfd > 2)
-			close(info->readfd);
-		_putchar(BUF_FLUSH);
+		j = starts_with(node->str, var);
+		if (j && *j == '=')
+		{
+			free(node->str);
+			node->str = buf;
+			info->env_changed = 1;
+			return (0);
+		}
+		node = node->next;
 	}
+	add_node_end(&(info->env), buf, 0);
+	free(buf);
+	info->env_changed = 1;
+	return (0);
 }
