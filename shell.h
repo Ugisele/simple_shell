@@ -196,7 +196,6 @@ size_typ print_list_str(const list_typ *);
 int delete_node_at_index(list_typ **, unsigned int);
 void free_list(list_typ **);
 
-<<<<<<< HEAD
 /* The_thread.c */
 int _strlen(char *);
 int _strcmp(char *, char *);
@@ -208,13 +207,28 @@ char *_strcpy(char *, char *);
 char *_strdup(const char *);
 void _puts(char *);
 int _putchar(char);
-=======
+
 /* The_itemize0.c */
 size_typ list_len(const list_typ *);
 char **list_to_strings(list_typ *);
 size_typ print_list(const list_typ *);
 list_typ *node_starts_with(list_typ *, char *, char);
 ssize_typ get_node_index(list_typ *, list_typ *);
->>>>>>> cfff8d6aefec1e47db7ecf65b9e67b3781b3fe61
+
+/* loop.c */
+int loop_hsh(char **);
+
+/* The_loop.c */
+int hsh(info_typ *, char **);
+int find_builtin(info_typ *);
+void find_cmd(info_typ *);
+void fork_cmd(info_typ *);
+
+/* The_archive.c */
+char *get_history_file(info_typ *info);
+int write_history(info_typ *info);
+int read_history(info_typ *info);
+int build_history_list(info_typ *info, char *buf, int line_count);
+int re_number_history(info_typ *info);
 
 #endif
