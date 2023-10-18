@@ -32,7 +32,7 @@ char *get_history_file(info_typ *info)
  */
 int write_history(info_typ *info)
 {
-	ssize_typ fd;
+	ssize_t fd;
 	char *filename = get_history_file(info);
 	list_typ *node = NULL;
 
@@ -46,9 +46,9 @@ int write_history(info_typ *info)
 	for (node = info->history; node; node = node->next)
 	{
 		_putsfd(node->str, fd);
-		_putfd('\n', fd);
+		_putsfd('\n', fd);
 	}
-	_putfd(BUF_FLUSH, fd);
+	_putsfd(BUF_FLUSH, fd);
 	close(fd);
 	return (1);
 }
@@ -57,12 +57,12 @@ int write_history(info_typ *info)
  * read_history - reads history from file
  * @info: the parameter struct
  *
- * Return: hist_count on success, 0 otherwise
+ * Return: histcount on success, 0 otherwise
  */
 int read_history(info_typ *info)
 {
 	int i, last = 0, line_count = 0;
-	ssize_typ fd, rdlen, fsize = 0;
+	ssize_t fd, rdlen, fsize = 0;
 	struct stat st;
 	char *buf = NULL, *filename = get_history_file(info);
 
@@ -95,18 +95,18 @@ int read_history(info_typ *info)
 	if (last != i)
 		build_history_list(info, buf + last, line_count++);
 	free(buf);
-	info->hist_count = line_count;
-	while (info->hist_count-- >= HIST_MAX)
+	info->histcount = line_count;
+	while (info->histcount-- >= HIST_MAX)
 		delete_node_at_index(&(info->history), 0);
 	re_number_history(info);
-	return (info->hist_count);
+	return (info->histcount);
 }
 
 /**
  * build_history_list - adds entry to a history linked list
  * @info: Structure containing potential arguments. Used to maintain
  * @buf: buffer
- * @line_count: the history line_count, hist_count
+ * @line_count: the history line_count, histcount
  *
  * Return: Always 0
  */
@@ -127,7 +127,7 @@ int build_history_list(info_typ *info, char *buf, int line_count)
  * re_number_history - renumbers the history linked list after changes
  * @info: Structure containing potential arguments. Used to maintain
  *
- * Return: the new hist_count
+ * Return: the new histcount
  */
 int re_number_history(info_typ *info)
 {
@@ -139,5 +139,5 @@ int re_number_history(info_typ *info)
 		node->num = i++;
 		node = node->next;
 	}
-	return (info->hist_count = i);
+	return (info->histcount = i);
 }
