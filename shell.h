@@ -224,4 +224,11 @@ int find_builtin(info_typ *);
 void find_cmd(info_typ *);
 void fork_cmd(info_typ *);
 
+/* The_archive.c */
+char *get_history_file(info_typ *info);
+int write_history(info_typ *info);
+int read_history(info_typ *info);
+int build_history_list(info_typ *info, char *buf, int line_count);
+int re_number_history(info_typ *info);
+
 #endif
