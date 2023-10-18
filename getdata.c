@@ -8,10 +8,10 @@
  *
  * Return: bytes read
  */
-ssize_typ input_buf(info_typ *info, char **buf, size_typ *len)
+ssize_t input_buf(info_typ *info, char **buf, size_t *len)
 {
-	ssize_typ c = 0;
-	size_typ len_g = 0;
+	ssize_t c = 0;
+	size_t len_g = 0;
 
 	if (!*len) /* if nothing left in the buffer, fill it */
 	{
@@ -50,11 +50,11 @@ ssize_typ input_buf(info_typ *info, char **buf, size_typ *len)
  *
  * Return: bytes read
  */
-ssize_typ get_input(info_typ *info)
+ssize_t get_input(info_typ *info)
 {
 	static char *buf; /* the ';' command chain buffer */
-	static size_typ t, v, len;
-	ssize_typ c = 0;
+	static size_t t, v, len;
+	ssize_t c = 0;
 	char **buf_g = &(info->arg), *g;
 
 	_putchar(BUF_FLUSH);
@@ -97,9 +97,9 @@ ssize_typ get_input(info_typ *info)
  *
  * Return: c
  */
-ssize_typ read_buf(info_typ *info, char *buf, size_typ *t)
+ssize_t read_buf(info_typ *info, char *buf, size_t *t)
 {
-	ssize_typ c = 0;
+	ssize_t c = 0;
 
 	if (*t)
 		return (0);
@@ -117,12 +117,12 @@ ssize_typ read_buf(info_typ *info, char *buf, size_typ *t)
  *
  * Return: s
  */
-int _getline(info_typ *info, char **ptr, size_typ *length)
+int _getline(info_typ *info, char **ptr, size_t *length)
 {
 	static char buf[READ_BUF_SIZE];
-	static size_typ t, len;
-	size_typ k;
-	ssize_typ c = 0, s = 0;
+	static size_t t, len;
+	size_t k;
+	ssize_t c = 0, s = 0;
 	char *g = NULL, *new_g = NULL, *c;
 
 	g = *ptr;
