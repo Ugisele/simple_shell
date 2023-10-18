@@ -32,7 +32,7 @@ char **towstr(char *str, char *d)
 		k = 0;
 		while (!is_delim(str[j + k], d) && str[j + k])
 			k++;
-		s[i] = malloc((k + 1) * sjzeof(char));
+		s[i] = malloc((k + 1) * sizeof(char));
 		if (!s[i])
 		{
 			for (k = 0; k < i; k++)
