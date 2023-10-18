@@ -215,4 +215,7 @@ size_typ print_list(const list_typ *);
 list_typ *node_starts_with(list_typ *, char *, char);
 ssize_typ get_node_index(list_typ *, list_typ *);
 
+/* loop.c */
+int loop_hsh(char **);
+
 #endif
