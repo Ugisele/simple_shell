@@ -218,4 +218,10 @@ ssize_typ get_node_index(list_typ *, list_typ *);
 /* loop.c */
 int loop_hsh(char **);
 
+/* The_loop.c */
+int hsh(info_typ *, char **);
+int find_builtin(info_typ *);
+void find_cmd(info_typ *);
+void fork_cmd(info_typ *);
+
 #endif
