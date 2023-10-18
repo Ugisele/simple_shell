@@ -8,9 +8,9 @@
  *
  * Return: 1 if chain delimeter, 0 otherwise
  */
-int is_chain(info_typ *info, char *buf, size_typ *p)
+int is_chain(info_typ *info, char *buf, size_t *p)
 {
-	size_typ j = *p;
+	size_t j = *p;
 
 	if (buf[j] == '|' && buf[j + 1] == '|')
 	{
@@ -45,9 +45,9 @@ int is_chain(info_typ *info, char *buf, size_typ *p)
  *
  * Return: Void
  */
-void check_chain(info_typ *info, char *buf, size_typ *p, size_typ i, size_typ len)
+void check_chain(info_typ *info, char *buf, size_t *p, size_t i, size_t len)
 {
-	size_typ j = *p;
+	size_t j = *p;
 
 	if (info->cmd_buf_type == CMD_AND)
 	{

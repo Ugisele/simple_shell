@@ -117,8 +117,8 @@ int _isalpha(int);
 int is_delim(char, char *);
 
 /* The_variables.c_File */
-int is_chain(info_typ *, char *, size_typ *);
-void check_chain(info_typ *, char *, size_typ *, size_typ, size_typ);
+int is_chain(info_typ *, char *, size_t *);
+void check_chain(info_typ *, char *, size_t *, size_t, size_t);
 int alias_replace(info_typ *);
 int vars_replace(info_typ *);
 int string_replace(char **, char *);
@@ -176,8 +176,8 @@ char *convert_number(long int, int, int);
 void remove_comments(char *);
 
 /*The_getdata.c_file*/
-ssize_typ get_input(info_typ *);
-int _getline(info_typ *, char **, size_typ *);
+ssize_t get_input(info_typ *);
+int _getline(info_typ *, char **, size_t *);
 void sigintHandler(int);
 
 /* The_analyzer.c */
@@ -192,7 +192,7 @@ char **towstr1(char *, char);
 /* The_itemize.c */
 list_typ *add_node(list_typ **, const char *, int);
 list_typ *add_node_end(list_typ **, const char *, int);
-size_typ print_list_str(const list_typ *);
+size_t print_list_str(const list_typ *);
 int delete_node_at_index(list_typ **, unsigned int);
 void free_list(list_typ **);
 
@@ -209,11 +209,11 @@ void _puts(char *);
 int _putchar(char);
 
 /* The_itemize0.c */
-size_typ list_len(const list_typ *);
+size_t list_len(const list_typ *);
 char **list_to_strings(list_typ *);
-size_typ print_list(const list_typ *);
+size_t print_list(const list_typ *);
 list_typ *node_starts_with(list_typ *, char *, char);
-ssize_typ get_node_index(list_typ *, list_typ *);
+ssize_t get_node_index(list_typ *, list_typ *);
 
 /* loop.c */
 int loop_hsh(char **);
