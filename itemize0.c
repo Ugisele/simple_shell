@@ -1,4 +1,3 @@
-
 #include "shell.h"
 
 /**
@@ -7,14 +6,14 @@
  *
  * Return: size of list
  */
-size_typ list_len(const list_typ*p)
+size_t list_len(const list_typ*p)
 {
-	size_typ k = 0;
+	size_t k = 0;
 
 	while (p)
 	{
 		p = p->next;
-		i++;
+		k++;
 	}
 	return (k);
 }
@@ -28,7 +27,7 @@ size_typ list_len(const list_typ*p)
 char **list_to_strings(list_typ*head)
 {
 	list_typ*node = head;
-	size_typ k = list_len(head), r;
+	size_t k = list_len(head), r;
 	char **strs;
 	char *str;
 
@@ -62,9 +61,9 @@ char **list_to_strings(list_typ*head)
  *
  * Return: size of list
  */
-size_typ print_list(const list_typ*p)
+size_t print_list(const list_typ*p)
 {
-	size_typ k = 0;
+	size_t k = 0;
 
 	while (p)
 	{
@@ -108,9 +107,9 @@ list_typ*node_starts_with(list_typ*node, char *adjunct, char c)
  *
  * Return: index of node or -1
  */
-ssize_typ get_node_index(list_typ*head, list_typ*node)
+ssize_t get_node_index(list_typ*head, list_typ*node)
 {
-	size_typ k = 0;
+	size_t k = 0;
 
 	while (head)
 	{
