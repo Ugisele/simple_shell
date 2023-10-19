@@ -6,7 +6,7 @@
  *          constant function prototype.
  * Return: Always 0
  */
-char **get_environ(info_typ *info)
+char **get_environ(info_t *info)
 {
 	if (!info->environ || info->env_changed)
 	{
@@ -24,9 +24,9 @@ char **get_environ(info_typ *info)
  *  Return: 1 on delete, 0 otherwise
  * @var: the string env var property
  */
-int _unsetenv(info_typ *info, char *var)
+int _unsetenv(info_t *info, char *var)
 {
-	list_typ *node = info->env;
+	list_t *node = info->env;
 	size_t i = 0;
 	char *j;
 
@@ -58,10 +58,10 @@ int _unsetenv(info_typ *info, char *var)
  * @value: the string env var value
  *  Return: Always 0
  */
-int _setenv(info_typ *info, char *var, char *value)
+int _setenv(info_t *info, char *var, char *value)
 {
 	char *buf = NULL;
-	list_typ *node;
+	list_t *node;
 	char *j;
 
 	if (!var || !value)
