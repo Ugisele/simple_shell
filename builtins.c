@@ -12,7 +12,7 @@ int _myexit(info_typ *info)
 	int exit_check;
 
 	if (info->argv[1])	{
-		exit_check = _err_convert(info->argv[1]);
+		exit_check = _erratoi(info->argv[1]);
 		if (exit_check == -1)
 		{
 			info->status = 2;
@@ -21,7 +21,7 @@ int _myexit(info_typ *info)
 			_eputchar('\n');
 			return (1);
 		}
-		info->err_num = _err_convert(info->argv[1]);
+		info->err_num = _erratoi(info->argv[1]);
 		return (-2);
 	}
 	info->err_num = -1;

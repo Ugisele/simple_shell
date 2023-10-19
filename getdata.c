@@ -13,9 +13,8 @@ ssize_t input_buf(info_typ *info, char **buf, size_t *len)
 	ssize_t c = 0;
 	size_t len_g = 0;
 
-	if (!*len) /* if nothing left in the buffer, fill it */
+	if (!*len)
 	{
-		/*bfree((void **)info->cmd_buf);*/
 		free(*buf);
 		*buf = NULL;
 		signal(SIGINT, sigintHandler);
@@ -28,7 +27,7 @@ ssize_t input_buf(info_typ *info, char **buf, size_t *len)
 		{
 			if ((*buf)[c - 1] == '\n')
 			{
-				(*buf)[c - 1] = '\0'; /* remove trailing newline */
+				(*buf)[c - 1] = '\0';
 				c--;
 			}
 			info->linecount_flag = 1;
@@ -123,7 +122,7 @@ int _getline(info_typ *info, char **ptr, size_t *length)
 	static size_t t, len;
 	size_t k;
 	ssize_t c = 0, s = 0;
-	char *g = NULL, *new_g = NULL, *c;
+	char *g = NULL, *new_g = NULL, *q;
 
 	g = *ptr;
 	if (g && length)
@@ -135,8 +134,8 @@ int _getline(info_typ *info, char **ptr, size_t *length)
 	if (c == -1 || (c == 0 && len == 0))
 		return (-1);
 
-	c = _strchr(buf + t, '\n');
-	k = c ? 1 + (unsigned int)(c - buf) : len;
+	q = _strchr(buf + t, '\n');
+	k = q ? 1 + (unsigned int)(q - buf) : len;
 	new_g = _realloc(g, s, s ? s + k : k + 1);
 	if (!new_g) /* MALLOC FAILURE! */
 		return (g ? free(g), -1 : -1);

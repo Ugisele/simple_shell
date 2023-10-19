@@ -9,7 +9,7 @@
  */
 int hsh(info_typ *info, char **av)
 {
-	ssize_typ rev = 0;
+	ssize_t rev = 0;
 	int builtin_return = 0;
 
 	while (rev != -1 && builtin_return != -2)
