@@ -8,7 +8,7 @@
  *
  * Return: bytes read
  */
-ssize_t input_buf(info_typ *info, char **buf, size_t *len)
+ssize_t input_buf(info_t *info, char **buf, size_t *len)
 {
 	ssize_t c = 0;
 	size_t len_g = 0;
@@ -49,7 +49,7 @@ ssize_t input_buf(info_typ *info, char **buf, size_t *len)
  *
  * Return: bytes read
  */
-ssize_t get_input(info_typ *info)
+ssize_t get_input(info_t *info)
 {
 	static char *buf; /* the ';' command chain buffer */
 	static size_t t, v, len;
@@ -96,7 +96,7 @@ ssize_t get_input(info_typ *info)
  *
  * Return: c
  */
-ssize_t read_buf(info_typ *info, char *buf, size_t *t)
+ssize_t read_buf(info_t *info, char *buf, size_t *t)
 {
 	ssize_t c = 0;
 
@@ -116,7 +116,7 @@ ssize_t read_buf(info_typ *info, char *buf, size_t *t)
  *
  * Return: s
  */
-int _getline(info_typ *info, char **ptr, size_t *length)
+int _getline(info_t *info, char **ptr, size_t *length)
 {
 	static char buf[READ_BUF_SIZE];
 	static size_t t, len;

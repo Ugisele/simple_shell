@@ -7,7 +7,7 @@
  *
  * Return: 1 if true, 0 
  */
-int is_cmd(info_typ *info, char *path)
+int is_cmd(info_t *info, char *path)
 {
 	struct stat st;
 
@@ -50,7 +50,7 @@ char *dup_chars(char *pathstr, int start, int stop)
  *
  * Return: full path of cmd if found or NULL
  */
-char *path_found(info_typ *info, char *pathstr, char *cmd)
+char *path_found(info_t *info, char *pathstr, char *cmd)
 {
 	int g = 0, curr_pos = 0;
 	char *path;

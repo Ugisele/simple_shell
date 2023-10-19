@@ -8,7 +8,7 @@
  *
  * Return: 1 if chain delimeter, 0 otherwise
  */
-int is_chain(info_typ *info, char *buf, size_t *p)
+int is_chain(info_t *info, char *buf, size_t *p)
 {
 	size_t j = *p;
 
@@ -45,7 +45,7 @@ int is_chain(info_typ *info, char *buf, size_t *p)
  *
  * Return: Void
  */
-void check_chain(info_typ *info, char *buf, size_t *p, size_t i, size_t len)
+void check_chain(info_t *info, char *buf, size_t *p, size_t i, size_t len)
 {
 	size_t j = *p;
 
@@ -75,10 +75,10 @@ void check_chain(info_typ *info, char *buf, size_t *p, size_t i, size_t len)
  *
  * Return: 1 if replaced, 0 otherwise
  */
-int alias_replace(info_typ *info)
+int alias_replace(info_t *info)
 {
 	int i;
-	list_typ *node;
+	list_t *node;
 	char *p;
 
 	for (i = 0; i < 10; i++)
@@ -104,10 +104,10 @@ int alias_replace(info_typ *info)
  *
  * Return: 1 if replaced, 0 otherwise
  */
-int vars_replace(info_typ *info)
+int vars_replace(info_t *info)
 {
 	int i = 0;
-	list_typ *node;
+	list_t *node;
 
 	for (i = 0; info->argv[i]; i++)
 	{

@@ -6,7 +6,7 @@
  *
  * Return: size of list
  */
-size_t list_len(const list_typ*p)
+size_t list_len(const list_t*p)
 {
 	size_t k = 0;
 
@@ -24,9 +24,9 @@ size_t list_len(const list_typ*p)
  *
  * Return: array of strings
  */
-char **list_to_strings(list_typ*head)
+char **list_to_strings(list_t*head)
 {
-	list_typ*node = head;
+	list_t*node = head;
 	size_t k = list_len(head), r;
 	char **strs;
 	char *str;
@@ -56,12 +56,12 @@ char **list_to_strings(list_typ*head)
 
 
 /**
- * print_list - prints all elements of a list_typlinked list
+ * print_list - prints all elements of a list_tlinked list
  * @h: pointer to first node
  *
  * Return: size of list
  */
-size_t print_list(const list_typ*p)
+size_t print_list(const list_t*p)
 {
 	size_t k = 0;
 
@@ -86,7 +86,7 @@ size_t print_list(const list_typ*p)
  *
  * Return: match node or null
  */
-list_typ*node_starts_with(list_typ*node, char *adjunct, char c)
+list_t*node_starts_with(list_t*node, char *adjunct, char c)
 {
 	char *p = NULL;
 
@@ -107,7 +107,7 @@ list_typ*node_starts_with(list_typ*node, char *adjunct, char c)
  *
  * Return: index of node or -1
  */
-ssize_t get_node_index(list_typ*head, list_typ*node)
+ssize_t get_node_index(list_t*head, list_t*node)
 {
 	size_t k = 0;
 

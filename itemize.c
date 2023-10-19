@@ -8,16 +8,16 @@
  *
  * Return: size of list
  */
-list_typ *add_node(list_typ **head, const char *str, int num)
+list_t *add_node(list_t **head, const char *str, int num)
 {
-	list_typ *new_head;
+	list_t *new_head;
 
 	if (!head)
 		return (NULL);
-	new_head = malloc(sizeof(list_typ));
+	new_head = malloc(sizeof(list_t));
 	if (!new_head)
 		return (NULL);
-	_memoryset((void *)new_head, 0, sizeof(list_typ));
+	_memoryset((void *)new_head, 0, sizeof(list_t));
 	new_head->num = num;
 	if (str)
 	{
@@ -41,18 +41,18 @@ list_typ *add_node(list_typ **head, const char *str, int num)
  *
  * Return: size of list
  */
-list_typ *add_node_end(list_typ **head, const char *str, int num)
+list_t *add_node_end(list_t **head, const char *str, int num)
 {
-	list_typ *new_node, *node;
+	list_t *new_node, *node;
 
 	if (!head)
 		return (NULL);
 
 	node = *head;
-	new_node = malloc(sizeof(list_typ));
+	new_node = malloc(sizeof(list_t));
 	if (!new_node)
 		return (NULL);
-	_memoryset((void *)new_node, 0, sizeof(list_typ));
+	_memoryset((void *)new_node, 0, sizeof(list_t));
 	new_node->num = num;
 	if (str)
 	{
@@ -75,12 +75,12 @@ list_typ *add_node_end(list_typ **head, const char *str, int num)
 }
 
 /**
- * print_list_str - prints only the str element of a list_typ linked list
+ * print_list_str - prints only the str element of a list_t linked list
  * @h: pointer to first node
  *
  * Return: size of list
  */
-size_t print_list_str(const list_typ *h)
+size_t print_list_str(const list_t *h)
 {
 	size_t i = 0;
 
@@ -101,9 +101,9 @@ size_t print_list_str(const list_typ *h)
  *
  * Return: 1 on success, 0 on failure
  */
-int delete_node_at_index(list_typ **head, unsigned int index)
+int delete_node_at_index(list_t **head, unsigned int index)
 {
-	list_typ *node, *prev_node;
+	list_t *node, *prev_node;
 	unsigned int i = 0;
 
 	if (!head || !*head)
@@ -140,9 +140,9 @@ int delete_node_at_index(list_typ **head, unsigned int index)
  *
  * Return: void
  */
-void free_list(list_typ **headptr)
+void free_list(list_t **headptr)
 {
-	list_typ *node, *next_node, *head;
+	list_t *node, *next_node, *head;
 
 	if (!headptr || !*headptr)
 		return;
