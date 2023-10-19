@@ -48,7 +48,7 @@ typedef struct liststr
 	int num;
 	char *str;
 	struct liststr *next;
-} list_typ;
+} list_t;
 
 /**
  *struct passinfo - contains pseudo-arguements to pass into a function,
@@ -82,9 +82,9 @@ typedef struct passinfo
 	int err_num;
 	int linecount_flag;
 	char *fname;
-	list_typ *env;
-	list_typ *history;
-	list_typ *alias;
+	list_t *env;
+	list_t *history;
+	list_t *alias;
 	char **environ;
 	int env_changed;
 	int status;
@@ -93,7 +93,7 @@ typedef struct passinfo
 	int cmd_buf_type; /* CMD_type ||, &&, ; */
 	int readfd;
 	int histcount;
-} info_typ;
+} info_t;
 
 #define INFO_INIT \
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
@@ -107,45 +107,45 @@ typedef struct passinfo
 typedef struct builtin
 {
 	char *type;
-	int (*func)(info_typ *);
+	int (*func)(info_t *);
 } builtin_table;
 
 /* The_convert.c_file*/
-int interactive(info_typ *);
+int interactive(info_t *);
 int _atoi(char *);
 int _isalpha(int);
 int is_delim(char, char *);
 
 /* The_variables.c_File */
-int is_chain(info_typ *, char *, size_t *);
-void check_chain(info_typ *, char *, size_t *, size_t, size_t);
-int alias_replace(info_typ *);
-int vars_replace(info_typ *);
+int is_chain(info_t *, char *, size_t *);
+void check_chain(info_t *, char *, size_t *, size_t, size_t);
+int alias_replace(info_t *);
+int vars_replace(info_t *);
 int string_replace(char **, char *);
 
 /* The_builtins.c_file */
-int _myexit(info_typ *);
-int _mycd(info_typ *);
-int _myhelp(info_typ *);
+int _myexit(info_t *);
+int _mycd(info_t *);
+int _myhelp(info_t *);
 
 /* The_memory.c_file */
 int good(void **);
 
 /* The_environment.c_file */
-char *_getenv(info_typ *, const char *);
-int _myenv(info_typ *);
-int _mysetenv(info_typ *);
-int _myunsetenv(info_typ *);
-int populate_env_list(info_typ *);
+char *_getenv(info_t *, const char *);
+int _myenv(info_t *);
+int _mysetenv(info_t *);
+int _myunsetenv(info_t *);
+int populate_env_list(info_t *);
 
 /* The_get_environment.c */
-char **get_environ(info_typ *);
-int _unsetenv(info_typ *, char *);
-int _setenv(info_typ *, char *, char *);
+char **get_environ(info_t *);
+int _unsetenv(info_t *, char *);
+int _setenv(info_t *, char *, char *);
 
 /* The_builtins0.c */
-int _myhistory(info_typ *);
-int _myalias(info_typ *);
+int _myhistory(info_t *);
+int _myalias(info_t *);
 
 /* The_reallocate.c */
 char *_memoryset(char *, char, unsigned int);
@@ -153,9 +153,9 @@ void _ffree(char **);
 void *_realloc(void *, unsigned int, unsigned int);
 
 /* The_getinformation.c_file */
-void clear_info(info_typ *);
-void set_info(info_typ *, char **);
-void free_info(info_typ *, int);
+void clear_info(info_t *);
+void set_info(info_t *, char **);
+void free_info(info_t *, int);
 
 /* The_exist.c_file */
 char *_strncpy(char *, char *, int);
@@ -170,31 +170,31 @@ int _putsfdir(char *str, int fdir);
 
 /* The_erratum0.c */
 int _erratoi(char *);
-void print_error(info_typ *, char *);
+void print_error(info_t *, char *);
 int print_d(int, int);
 char *convert_number(long int, int, int);
 void remove_comments(char *);
 
 /*The_getdata.c_file*/
-ssize_t get_input(info_typ *);
-int _getline(info_typ *, char **, size_t *);
+ssize_t get_input(info_t *);
+int _getline(info_t *, char **, size_t *);
 void sigintHandler(int);
 
 /* The_analyzer.c */
-int is_cmd(info_typ *, char *);
+int is_cmd(info_t *, char *);
 char *dup_chars(char *, int, int);
-char *path_found(info_typ *, char *, char *);
+char *path_found(info_t *, char *, char *);
 
 /* The_token.c_file */
 char **towstr(char *, char *);
 char **towstr1(char *, char);
 
 /* The_itemize.c */
-list_typ *add_node(list_typ **, const char *, int);
-list_typ *add_node_end(list_typ **, const char *, int);
-size_t print_list_str(const list_typ *);
-int delete_node_at_index(list_typ **, unsigned int);
-void free_list(list_typ **);
+list_t *add_node(list_t **, const char *, int);
+list_t *add_node_end(list_t **, const char *, int);
+size_t print_list_str(const list_t *);
+int delete_node_at_index(list_t **, unsigned int);
+void free_list(list_t **);
 
 /* The_thread.c */
 int _strlen(char *);
@@ -209,26 +209,26 @@ void _puts(char *);
 int _putchar(char);
 
 /* The_itemize0.c */
-size_t list_len(const list_typ *);
-char **list_to_strings(list_typ *);
-size_t print_list(const list_typ *);
-list_typ *node_starts_with(list_typ *, char *, char);
-ssize_t get_node_index(list_typ *, list_typ *);
+size_t list_len(const list_t *);
+char **list_to_strings(list_t *);
+size_t print_list(const list_t *);
+list_t *node_starts_with(list_t *, char *, char);
+ssize_t get_node_index(list_t *, list_t *);
 
 /* loop.c */
 int loop_hsh(char **);
 
 /* The_loop.c */
-int hsh(info_typ *, char **);
-int find_builtin(info_typ *);
-void find_cmd(info_typ *);
-void fork_cmd(info_typ *);
+int hsh(info_t *, char **);
+int find_builtin(info_t *);
+void find_cmd(info_t *);
+void fork_cmd(info_t *);
 
 /* The_archive.c */
-char *get_history_file(info_typ *info);
-int write_history(info_typ *info);
-int read_history(info_typ *info);
-int build_history_list(info_typ *info, char *buf, int line_count);
-int re_number_history(info_typ *info);
+char *get_history_file(info_t *info);
+int write_history(info_t *info);
+int read_history(info_t *info);
+int build_history_list(info_t *info, char *buf, int line_count);
+int re_number_history(info_t *info);
 
 #endif
